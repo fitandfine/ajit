@@ -142,6 +142,45 @@
                 font-size: 1em;
             }
         }
+        /* QR Popup Styles */
+#qr-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#qr-popup-content {
+    background: white;
+    padding: 30px;
+    text-align: center;
+    border-radius: 10px;
+    max-width: 400px;
+    width: 90%;
+    position: relative;
+}
+
+#qr-popup-content .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: rgba(210, 31, 27, 1);
+}
+
+#qr-image {
+    margin-top: 20px;
+    width: 200px;
+    height: 200px;
+}
+
     </style>
 </head>
 <body>
@@ -170,7 +209,8 @@
 <!-- Footer Section -->
 <footer>
     <button onclick="sharePage()">Share This Page</button>
-    <button onclick="downloadVCard()">Download vCard</button>
+    <button onclick="downloadVCard()">Save my number</button>
+    <button onclick="thisQR()">This QR</button>
     <button onclick="showPopup()">About Developer</button>
 </footer>
 
@@ -195,6 +235,14 @@
             <input type="hidden" name="currency_code" value="USD" />
             <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate Now" />
         </form>
+    </div>
+</div>
+<!-- QR Popup -->
+<div id="qr-popup">
+    <div id="qr-popup-content">
+        <span class="close-btn" onclick="closeQRPopup()">&times;</span>
+        <h2>Scan this QR Code</h2>
+        <img id="qr-image" src="images/qr-code.png" alt="QR Code">
     </div>
 </div>
 
@@ -222,6 +270,14 @@
     function closePopup() {
         document.getElementById('developer-popup').style.display = 'none';
     }
+    function thisQR() {
+    document.getElementById('qr-popup').style.display = 'flex';
+}
+
+function closeQRPopup() {
+    document.getElementById('qr-popup').style.display = 'none';
+}
+
 </script>
 
 </body>
