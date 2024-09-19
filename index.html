@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Official page of World Cyclist Ajit Baral, promoting environmental awareness and tourism.">
+    <title>World Cyclist Ajit Baral</title>
+    <style>
+        /* Global Styling for Consistency */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('images/background.webp') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            text-align: center;
+        }
+        header {
+            background-color: rgba(0, 51, 102, 0.9); /* Nepal Blue */
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        header h1 {
+            color: #fff;
+            font-size: 2.5em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        header p {
+            font-size: 1.2em;
+            margin-top: 5px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        /* Footer Styles */
+        .footer {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: rgba(210, 31, 27, 0.9); /* Nepal Red */
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .footer button, .footer input[type="submit"] {
+            background-color: rgba(255, 255, 255, 0.7);
+            color: rgba(210, 31, 27, 1); /* Nepal Red */
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 1.2em;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+        }
+        .footer button:hover, .footer input[type="submit"]:hover {
+            background-color: rgba(0, 51, 102, 1); /* Nepal Blue */
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        /* Popup Styles */
+        .popup {
+            position: fixed;
+            display: none;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .popup-content {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            width: 80%;
+            max-width: 400px;
+            animation: fadeIn 0.5s ease-in-out;
+            position: relative;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5em;
+            cursor: pointer;
+            color: rgba(231, 76, 60, 1); /* Close button red */
+            transition: transform 0.3s, color 0.3s;
+        }
+        .close-btn:hover {
+            transform: rotate(90deg);
+            color: rgba(192, 57, 43, 1); /* Hover close button color */
+        }
+
+        /* Special button styling for Buy Coffee */
+        .buy-coffee {
+            background-color: rgba(255, 221, 87, 1);
+            color: #333;
+            padding: 15px;
+            border-radius: 50px;
+            border: none;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .buy-coffee:hover {
+            background-color: rgba(240, 196, 0, 1);
+            transform: scale(1.1);
+        }
+
+        /* Responsive Design for mobile hover effects */
+        @media (hover: hover) and (pointer: fine) {
+            .footer button:hover {
+                background-color: rgba(0, 51, 102, 1); /* Nepal Blue */
+                color: #fff;
+                transform: scale(1.05);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer button {
+                width: 100%;
+                margin: 10px 0;
+            }
+            .popup-content {
+                width: 90%;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>World Cyclist Ajit Baral</h1>
+    <p>Phone & WhatsApp: +977 9846440046</p>
+</header>
+
+<!-- Footer Section -->
+<div class="footer">
+    <b>
+        <button onclick="sharePage()">Share This Page</button>
+        <button onclick="showPopup('qr-popup')">Share QR</button>
+        <button onclick="showPopup('developer-popup')">About Developer</button>
+    </b>
+</div>
+
+<!-- Popup for QR Code -->
+<div class="popup" id="qr-popup">
+    <div class="popup-content">
+        <span class="close-btn" onclick="hidePopup('qr-popup')">&times;</span>
+        <img src="images/page.png" alt="QR Code for Sharing" style="max-width: 100%;">
+    </div>
+</div>
+
+<!-- Popup for Developer Info -->
+<div class="popup" id="developer-popup">
+    <div class="popup-content">
+        <span class="close-btn" onclick="hidePopup('developer-popup')">&times;</span>
+        <b>
+            <p>This page was developed with love by Anup Chapain. For any inquiries or custom page development, feel free to get in touch!</p>
+            <button onclick="sendDeveloperEmail()">Send me an Email</button>
+            <button onclick="window.open('https://www.instagram.com/anupcp/', '_blank')">See Insta</button>
+            <!-- PayPal Donation Button -->
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <input type="hidden" name="cmd" value="_s-xclick" />
+                <input type="hidden" name="hosted_button_id" value="USFBRREC74KME" />
+                <input type="hidden" name="currency_code" value="USD" />
+                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Gift Now" />
+              </form>
+        </b>
+    </div>
+</div>
+
+<script>
+    // Share Page Functionality
+    function sharePage() {
+        if (navigator.share) {
+            navigator.share({
+                title: 'World Cyclist Ajit Baral',
+                text: 'Check out World Cyclist Ajit Baral’s page!',
+                url: window.location.href
+            }).then(() => console.log('Page shared successfully!'))
+              .catch(err => console.error('Error sharing page:', err));
+        } else {
+            alert('Sharing is not supported in this browser.');
+        }
+    }
+
+    // Show Popup Function
+    function showPopup(popupId) {
+        document.getElementById(popupId).style.display = 'flex';
+    }
+
+    // Hide Popup Function
+    function hidePopup(popupId) {
+        document.getElementById(popupId).style.display = 'none';
+    }
+
+    // Send Email Function
+    function sendDeveloperEmail() {
+        window.location.href = 'mailto:pleasedontgetconfused@gmail.com?subject=Custom%20Development%20Inquiry';
+    }
+</script>
+
+</body>
+</html>
